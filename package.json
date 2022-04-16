@@ -1,14 +1,11 @@
 {
   "name": "data-protect",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Protect data such as email addresses from spam bots on your website",
   "main": "index.js",
   "scripts": {
     "test": "node test/test.js"
   },
-  "keywords": [
-    "spam"
-  ],
   "author": "Jack Childs",
   "license": "MIT"
 }

@@ -4,7 +4,8 @@
   "description": "Protect data such as email addresses from spam bots on your website",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "build": "browserify index.js -s DataProtect -o bundle.js"
   },
   "author": "Jack Childs",
   "license": "MIT"

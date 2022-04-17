@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Protect Demo</title>
+</head>
+<body>
+    <p>
+        This text is 
+        <span data-encoded="589-265-675-605-596-680-537-682-274-646-614-637-600-272-672-614-604-671-619-695">loading..</span>.
+    </p>
+    <script src="../bundle.js"></script>
+    <script>
+        // simplify reference to DataProtect
+        DataProtect = DataProtect.DataProtect;
+
+        const els = document.querySelectorAll('[data-encoded]');
+
+        // after 3 seconds, go through all elements with data-encoded attribute and then replace the text content with the decoded data
+        window.setTimeout(() => {
+            els.forEach ((e) => {
+                e.textContent = DataProtect.decodeData(
+                    e.getAttribute('data-encoded'),
+                    {
+                        key: 'a secret key'
+                    }
+                )
+            })
+        }, 3000)
+    </script>
+
+</body>
+</html>

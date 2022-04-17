@@ -5,7 +5,7 @@ const DataProtect = {
             x: 5, // just a number
             delimiter: '-' // character(s) that are not a number
         }
-        x = x ?? {}
+        x = x || {}
         Object.keys(y).forEach(function(k) {
             if (typeof x[k] === 'undefined') {
                 x[k] = JSON.parse(JSON.stringify(y[k]))

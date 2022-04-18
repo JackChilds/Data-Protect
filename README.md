@@ -13,7 +13,9 @@ For a real world example, take a look at [my website](https://jackchilds.tech), 
 
 ## Reference
 
-### options
+### Options
+*DataProtect.options: get, set*
+
 The default config can be read (and modified) by accessing the defaultConfig property. 
 ```js
 {
@@ -24,10 +26,14 @@ The default config can be read (and modified) by accessing the defaultConfig pro
 }
 ```
 
-### encodeData (data, options)
-**data**: can be a string, number, whatever
-**options**: should match the syntax of the options object. If properties of the object are not set, defaults will be used
+### Encode Data
+*DataProtect.encodeData (data, options)*
 
-### decodeData (data, options)
-**data**: is the encoded data
-**options**: same as what you used for encoding
+- **data**: can be a string, number, whatever
+- **options**: should match the syntax of the options object. If properties of the object are not set, defaults will be used
+
+### Decode Data
+*DataProtect.decodeData (data, options)*
+
+- **data**: is the encoded data
+- **options**: same as what you used for encoding

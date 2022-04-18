@@ -37,3 +37,75 @@ The default config can be read (and modified) by accessing the defaultConfig pro
 
 - **data**: is the encoded data
 - **options**: same as what you used for encoding
+
+## Next.js Example
+**Component:**
+```js
+import React from 'react';
+
+import { DataProtect } from 'data-protect'
+
+export default class ContactEmail extends React.Component {
+    constructor(props) {
+        super(props)
+        this.placeholder = 'loading...'
+
+        // ensure that these options match those used to encode the component
+        this.options = {
+            key: props.emailKey,
+            x: 8,
+            delimiter: ' '
+        }
+        this.state = {
+            email: this.placeholder
+        }
+    }
+
+    componentDidMount() {
+        this.delayTimer = setTimeout(() => {
+            this.setState({
+                email: DataProtect.decodeData(this.props.encodedEmail, this.options)
+            })
+        }, this.props.delay)
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.delayTimer)
+    }
+
+    render() {
+        return (
+            <a href={this.state.email === this.placeholder ? '#' : `mailto:${this.state.email}?subject=${this.props.subject}`}
+            className="hover:underline hover:text-gray-300">
+                { this.state.email }
+            </a>
+        )
+    }
+}
+```
+**getStaticProps and usage**
+
+(getStaticProps is used to ensure that the email is encoded at build time)
+
+```js
+import { DataProtect } from 'data-protect'
+export async function getStaticProps () {
+    // generate a random string
+    const key = ((Math.random() + 1).toString(36).substring(2,9)) + ((Math.random() + 1).toString(36).substring(2,9)); 
+
+    return {
+        props: {
+            encodedEmail: DataProtect.encodeData("someone@example.com",
+            {
+                key: key,
+                x: 8,
+                delimiter: ' '
+            }),
+            emailKey: key
+        }
+    }
+}
+```
+```xml
+<ContactEmail encodedEmail={encodedEmail} emailKey={emailKey} subject="I am interested in your work" delay="3000" />
+```

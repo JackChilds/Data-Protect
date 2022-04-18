@@ -5,7 +5,7 @@ Protect data such as email addresses from spam bots on your website
 **This package should not be used to transport sensitive information accross the internet as the methods of encryption and decryptions are not built with the purpose of securing data but instead obfuscating it. If you need to encrypt and decrypt data you should instead look for a cryptography library using algorithms like AES and RSA.**
 
 ## What is this?
-This repository contains a few small components that you can use to try to reduce spam through email links and other vulnerable data on your website. It is recommended that you read the blog post [here](https://jackchilds.tech/posts/reducing_spam_from_mailto_links) for more information.
+This [npm package](https://npmjs.com/package/data-protect) contains tools that you may use to try to reduce spam through email links and other vulnerable data on your website by hiding the data from the source code through a customisable encoding/decoding process. It is recommended that you read the blog post [here](https://jackchilds.tech/posts/reducing_spam_from_mailto_links) for more information.
 
 
 ## Real world example

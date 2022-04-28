@@ -29,7 +29,7 @@ const DataProtect = {
             if (!x.suppressConsole) console.warn('Delimiter should not be "", changed to "-"')
         }
 
-        if (x.x % 1 !== 1 && !x.suppressConsole) console.warn('x rounded to nearest whole number, x should not be set to a floating point number')
+        if (x.x % 1 !== 0 && !x.suppressConsole) console.warn('x rounded to nearest whole number, x should not be set to a floating point number')
         x.x = Math.round(x.x) // decimals make the return value messy, and issues with float accuracy could cause data corruption
 
         return x
